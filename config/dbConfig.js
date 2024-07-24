@@ -1,13 +1,14 @@
 const sql = require('mssql');
 require('dotenv').config();
 
-const connectionString = process.env.DefaultConnection;
 const config = {
-  connectionString: connectionString,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_DATABASE,
   options: {
     encrypt: true,
-    enableArithAbort: true,
-    trustServerCertificate: false // Ensure this matches your needs
+    enableArithAbort: true
   }
 };
 
