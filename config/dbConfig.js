@@ -8,7 +8,8 @@ const config = {
   database: process.env.DB_DATABASE,
   options: {
     encrypt: true,
-    enableArithAbort: true
+    enableArithAbort: true,
+    trustServerCertificate: false // Add this line if you haven't already
   }
 };
 
@@ -18,7 +19,10 @@ const connection = new sql.ConnectionPool(config)
     console.log('Connected to SQL Server');
     return conn;
   })
-  .catch(err => console.log('Database Connection Failed! Bad Config: ', err));
+  .catch(err => {
+    console.log('Database Connection Failed! Bad Config: ', err);
+    throw err;
+  });
 
 module.exports = {
   sql, connection
