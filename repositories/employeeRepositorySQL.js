@@ -1,6 +1,6 @@
-const { sql, connection } = require('../config/dbConfig');
+const { sql, connection } = require('../config/sqlServerConfig');
 
-class EmployeeRepository{
+class EmployeeRepositorySQL {
   async addEmployee(employee) {
       try {
           const conn = await connection;
@@ -73,4 +73,4 @@ class EmployeeRepository{
       }
   }
       
-module.exports = EmployeeRepository;
+module.exports = EmployeeRepositorySQL ;
